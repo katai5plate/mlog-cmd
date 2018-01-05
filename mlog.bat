@@ -14,7 +14,7 @@ echo 気分：%mes2%
 echo.
 set /p yes=これでよろしいですか？[y]：
 if not x%yes%==xy goto inp
-echo %dtime%	%mes2%	%mes1%>>%outname%
+echo %dtime%,%mes2%,%mes1%>>%outname%
 echo.
 echo.
 echo 完了。
