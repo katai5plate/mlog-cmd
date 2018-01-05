@@ -1,4 +1,6 @@
 @echo off
+for /f "tokens=1,* delims==" %%a in (mlog.ini) do (set %%a=%%b)
+if not exist mlog.ini goto err
 set dtime=%date% %time%
 :inp
 echo.
@@ -12,8 +14,16 @@ echo 気分：%mes2%
 echo.
 set /p yes=これでよろしいですか？[y]：
 if not x%yes%==xy goto inp
-echo %dtime%	%mes2%	%mes1%>>mlog.csv
+echo %dtime%	%mes2%	%mes1%>>%outname%
 echo.
-echo 書き込みました。
+echo.
+echo 完了。
 echo.
 pause
+exit
+:err
+echo.
+echo エラーが発生したため終了します。
+echo.
+pause
+exit
