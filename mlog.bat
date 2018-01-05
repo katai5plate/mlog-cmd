@@ -1,6 +1,6 @@
 @echo off
 for /f "tokens=1,* delims==" %%a in (mlog.ini) do (set %%a=%%b)
-if not exist mlog.ini goto err
+if not exist %outdir% goto err
 set dtime=%date% %time%
 :inp
 echo.
@@ -14,7 +14,8 @@ echo 気分：%mes2%
 echo.
 set /p yes=これでよろしいですか？[y]：
 if not x%yes%==xy goto inp
-echo %dtime%,%mes2%,%mes1%>>%outname%
+if not exist %outdir%%outname% echo 時間,表情,ログ>%outdir%%outname%
+echo %dtime%,%mes2%,%mes1%>>%outdir%%outname%
 echo.
 echo.
 echo 完了。
